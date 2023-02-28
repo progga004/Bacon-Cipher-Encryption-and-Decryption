@@ -1,3 +1,4 @@
+
 #include "bacon.h"
 #include <string.h>
 #include <stdio.h>
@@ -41,16 +42,29 @@ int encrypt(const char *plaintext, char *ciphertext)
     for (  n = 0; ciphertext[n] != '\0'; n++)
     {
        
-        str2[n]=tolower(ciphertext[n]);
+        str2[n]=ciphertext[n];
     }
     str2[n]='\0'; // creating all lower case letters string named str2 from ciphertext
+    for (  n = 0; str2[n] != '\0'; n++)
+    {
+       
+        str2[n]=tolower(str2[n]);
+    }
+    //
+    //str2[n]='\0';
+
     int m=0;
      for (  m = 0; plaintext[m] != '\0'; m++)
     {
         
-        str3[m]=toupper(plaintext[m]);
+        str3[m]=plaintext[m];
     }
     str3[m]='\0'; // creating all uppercase letters string named str3 from plaintext
+    for (  m = 0; str3[m] != '\0'; m++)
+    {
+        
+        str3[m]=toupper(str3[m]);
+    }
     for (int i = 0; i < words; i++)
     { char *ptr; // creating a pointer to store the specific character value 6 bits from plaintext
        if (str3[i] >= 'A' && str3[i] <= 'Z')
@@ -146,7 +160,9 @@ int encrypt(const char *plaintext, char *ciphertext)
     }
      
      str1[k]='\0'; // the final encrypted cipher text
-     printf("the ciphertext is %s\n",str1);
+     //printf("the ciphertext is %s\n",str1);
+     ciphertext=str1;
+     //printf("the ciphertext is %s\n",ciphertext);
      return words;// return the words encrypted from plaintext
 }
 
