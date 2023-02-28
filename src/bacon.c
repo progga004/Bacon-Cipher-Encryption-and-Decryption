@@ -42,9 +42,9 @@ int encrypt(const char *plaintext, char *ciphertext)
     for (  n = 0; ciphertext[n] != '\0'; n++)
     {
        
-        str2[n]=ciphertext[n];
+       ciphertext[n]=tolower(ciphertext[n]);
     }
-    str2[n]='\0'; // creating all lower case letters string named str2 from ciphertext
+    //str2[n]='\0'; // creating all lower case letters string named str2 from ciphertext
     for (  n = 0; str2[n] != '\0'; n++)
     {
        
@@ -87,15 +87,15 @@ int encrypt(const char *plaintext, char *ciphertext)
         {
             if ((ptr[j] == '0') ) // if the value is 0
             {
-                if(str2[cipertextpos]>=' ' && str2[cipertextpos]<='9') // confusion here// going through the lowercase str2
+                if(ciphertext[cipertextpos]>=' ' && ciphertext[cipertextpos]<='9') // confusion here// going through the lowercase str2
                 {
-                    str1[k]=str2[cipertextpos];
+                    ciphertext[k]=ciphertext[cipertextpos];
                     k++;
                     cipertextpos++;
                 }// excluding the values of special symbols and digits
                 else
                 {
-                     str1[k] = str2[cipertextpos];
+                     ciphertext[k] = ciphertext[cipertextpos];
                      cipertextpos = cipertextpos + 1;
                       j++;
                       k++;
@@ -103,18 +103,18 @@ int encrypt(const char *plaintext, char *ciphertext)
             }
             else // if the value is 1
             {
-                if (str2[cipertextpos]>=' ' && str2[cipertextpos]<='9') // again checking the ciphertext if there is any special symbols or digits
+                if (ciphertext[cipertextpos]>=' ' && ciphertext[cipertextpos]<='9') // again checking the ciphertext if there is any special symbols or digits
                 {
-                    str1[k] = str2[cipertextpos];
+                    ciphertext[k] = ciphertext[cipertextpos];
                     cipertextpos++;
                     k++;
                 }// exclude them
                 else
                 {
                     // making the character case upper and input them
-                    char c = str2[cipertextpos];
+                    char c = ciphertext[cipertextpos];
                     char p = c - 32;
-                    str1[k] = p;
+                    ciphertext[k] = p;
                     cipertextpos++;
                     j++;
                     k++;
@@ -130,7 +130,7 @@ int encrypt(const char *plaintext, char *ciphertext)
         {
             if(ciphertext[cipertextpos]>=' ' && ciphertext[cipertextpos]<='9') // exclude them
             {
-                str1[k]=ciphertext[cipertextpos];
+                ciphertext[k]=ciphertext[cipertextpos];
                 cipertextpos++;
                 k++;
             }
@@ -138,13 +138,13 @@ int encrypt(const char *plaintext, char *ciphertext)
             {
                 if(ciphertext[cipertextpos]>='a'&& ciphertext[cipertextpos]<='z') // if the character is lower, make them upper
                 {
-                 str1[k]=ciphertext[cipertextpos]-32;
+                 ciphertext[k]=ciphertext[cipertextpos]-32;
                  cipertextpos++;
                  k++;
                  p++;}
                 else
                 {
-                   str1[k]=ciphertext[cipertextpos]; // if the character is upper, stay them in that way
+                   ciphertext[k]=ciphertext[cipertextpos]; // if the character is upper, stay them in that way
                    cipertextpos++;
                    k++;
                    p++; 
@@ -153,15 +153,15 @@ int encrypt(const char *plaintext, char *ciphertext)
                
             
         }
-        str1[k]=ciphertext[cipertextpos];// if there is still something to count just put them
+        ciphertext[k]=ciphertext[cipertextpos];// if there is still something to count just put them
         cipertextpos++;
          k++;
          
     }
      
-     str1[k]='\0'; // the final encrypted cipher text
+     //str1[k]='\0'; // the final encrypted cipher text
      //printf("the ciphertext is %s\n",str1);
-     ciphertext=str1;
+     //ciphertext=str1;
      //printf("the ciphertext is %s\n",ciphertext);
      return words;// return the words encrypted from plaintext
 }
@@ -172,7 +172,10 @@ int decrypt(const char *ciphertext, char *plaintext)
 }
 // int main()
 // {
-//     int p = encrypt("","2023 United States of America");
-//     printf("The value can't be right : %d\n", p);
+//     char ciphertext[] = "I can store three characters! Yes!";
+//     char *plaintext = "Stony Brook University";
+//     int count_act = encrypt(plaintext, ciphertext);  // s = 010010, t = 010011, o = 001110
+//     char *ciphertext_exp = ciphertext;
+//     printf("%s %d the new one\n",ciphertext_exp,count_act);
 //     return 0;
 // }
