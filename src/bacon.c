@@ -1,4 +1,4 @@
-//#include "bacon.h"
+#include "bacon.h"
 #include <string.h>
 #include <stdio.h>
 // Add other #includes here if you want.
