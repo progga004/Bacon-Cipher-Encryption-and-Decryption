@@ -296,24 +296,24 @@ int decrypt(const char *ciphertext, char *plaintext)
 //     int count_exp = 3;
 //    printf( "ciphertext was:          %s\nbut it should have been: %s", ciphertext_act, ciphertext_exp);
 //     printf( "Return value was %d, but it should have been %d.\n", count_act, count_exp);
-// // char plaintext_act[] = "*******************";
-// //     for (unsigned int i = 0; i < strlen(plaintext_act); i++)
-// //         plaintext_act[i] = (char)(rand() % 200 + 33);
-// //     char *ciphertext = "One Of THe mAiN cAuseS of THE fall of The rOman EmpiRe Was THaT LaCking ZeRo, tHey haD no wAy To iNDicaTE SUCCESSful termination of their C programs.";
-// //     int count_act = decrypt(ciphertext, plaintext_act);  
-// //     char *plaintext_exp = "--ROBERT FIRTH";
-// //     int count_exp = 14;
-// //     printf("plaintext was:           %s\nbut it should have been: %s", plaintext_act, plaintext_exp);
-// //     printf("Return value was %d, but it should have been %d.\n", count_act, count_exp);
-// // char plaintext_act[] = "@@@@@@@@@";
-// //     for (unsigned int i = 0; i < strlen(plaintext_act); i++)
-// //         plaintext_act[i] = (char)(rand() % 200 + 33);
-// //     char *ciphertext = "i Can StoRe tHRee CHArACTERS! Yes!";
-// //     int count_act = decrypt(ciphertext, plaintext_act);  
-// //     char *plaintext_exp = "STO";
-// //     int count_exp = 3;
-// // printf( "plaintext was:           %s\nbut it should have been: %s", plaintext_act, plaintext_exp);
-// //   printf("Return value was %d, but it should have been %d.\n", count_act, count_exp);
+// char plaintext_act[] = "*******************";
+//     // for (unsigned int i = 0; i < strlen(plaintext_act); i++)
+//     //     plaintext_act[i] = (char)(rand() % 200 + 33);
+//     char *ciphertext = "One Of THe mAiN cAuseS of THE fall of The rOman EmpiRe Was THaT LaCking ZeRo, tHey haD no wAy To iNDicaTE SUCCESSful termination of their C programs.";
+//     int count_act = decrypt(ciphertext, plaintext_act);  
+//     char *plaintext_exp = "--ROBERT FIRTH";
+//     int count_exp = 14;
+//     printf("plaintext was:           %s\nbut it should have been: %s", plaintext_act, plaintext_exp);
+//     printf("Return value was %d, but it should have been %d.\n", count_act, count_exp);
+// char plaintext_act[] = "@@@@@@@@@";
+//     // for (unsigned int i = 0; i < strlen(plaintext_act); i++)
+//     //     plaintext_act[i] = (char)(rand() % 200 + 33);
+//     char *ciphertext = "i Can StoRe tHRee CHArACTERS! Yes!";
+//     int count_act = decrypt(ciphertext, plaintext_act);  
+//     char *plaintext_exp = "STO";
+//     int count_exp = 3;
+// printf( "plaintext was:           %s\nbut it should have been: %s", plaintext_act, plaintext_exp);
+//   printf("Return value was %d, but it should have been %d.\n", count_act, count_exp);
 
 
 //     return 0;
