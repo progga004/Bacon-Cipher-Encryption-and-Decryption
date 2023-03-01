@@ -87,10 +87,15 @@ int encrypt(const char *plaintext, char *ciphertext)
          ptr = baconCodes[index];
         } // finding out the value from the baconCodes index if the letter is between A-Z
         else 
-        {   if(str3[i]>='*' && str3[i]<='9'){
+        {   if(str3[i]>='*' && str3[i]<=';'){
               int index=str3[i]-6-2;
               ptr=baconCodes[index];
             }// if the value is from upper 44 (42,43) not included
+            else if(str3[i]=='?')
+            {
+                int index=str3[i]-11;
+                ptr=baconCodes[index];
+            }
             else
             {
                  int index=str3[i]-6;
@@ -286,4 +291,6 @@ int decrypt(const char *ciphertext, char *plaintext)
 // int main()
 // {
 
-//  }
+// }
+    
+ 
