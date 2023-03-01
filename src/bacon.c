@@ -207,13 +207,43 @@ int decrypt(const char *ciphertext, char *plaintext)
         }
        
     }
+    countWithoutSpaces=length_2-countWithoutSpaces;
      
     str1[j]='\0';
     int index=0;
     int cipertextpos=0;
     int count=0;
     int plaintextpos=0;
+    char str2[length_2];
+    int lp=0;
+    for( lp=0;str1[lp]!='\0';lp++)
+    {
+        if(str1[lp]>='a'&& str1[lp]<='z')
+        {
+            str2[lp]=str1[lp]-32;
+        }
+        else{
+            str2[lp]=str1[lp];
+        }
+    }
+    str2[lp]='\0';
     
+    int p=0;
+   // printf("The string 2 is:%s\n",str2);
+ for(int init=0;str2[init]!='\0';init++)
+ {
+    for(int bc=0;bc<=52;bc++)
+    {
+        if(str2[init]==bconcodes[bc])
+        {
+            //printf("The value which breaks rule:%c\n",str2[init]);
+           p++;
+          
+        }
+    }
+ } 
+  
+ 
   if(strlen(ciphertext)>=6){
    for(int p=0;p<strlen(str1) && cipertextpos<=strlen(str1);p=p+6)
    {
@@ -230,7 +260,7 @@ int decrypt(const char *ciphertext, char *plaintext)
                j++;
                cipertextpos++;
            }
-           else
+           else 
            {
             
                ptr[j]=0;
@@ -262,11 +292,10 @@ int decrypt(const char *ciphertext, char *plaintext)
         plaintextpos++;
           count++;
       }
-      else
-      {
-          return -3;
-         
+      else{
+        return -3;
       }
+      
       }
       
     }
@@ -279,18 +308,39 @@ int decrypt(const char *ciphertext, char *plaintext)
         return -1;
     }
     
-    if(strlen(ciphertext)<6)
+    if(strlen(str1)<6)
     {
                plaintext[plaintextpos]='\0';
                return -2;
                 
     }
-    
-    return count; 
+    if(p!=countWithoutSpaces)
+ {
+    return -3;
+ }
+   
+    return count;
 }
 // int main()
 // {
-
+//   char plaintext_act[] = "@@@@@@@@@";
+//     //for (unsigned int i = 0; i < strlen(plaintext_act); i++)
+//        // plaintext_act[i] = (char)(rand() % 200 + 33);
+//     char *ciphertext = "TOO SHO]t";
+//     int count_act = decrypt(ciphertext, plaintext_act);  
+//     char *plaintext_exp = "STO";
+//     int count_exp = 3;
+//     printf( "plaintext was:           %s\nbut it should have been: %s", plaintext_act, plaintext_exp);
+//     printf("Return value was %d, but it should have been %d.\n", count_act, count_exp);
+//     char plaintext_act1[] = "*******************";
+//     //for (unsigned int i = 0; i < strlen(plaintext_act); i++)
+//         //plaintext_act[i] = (char)(rand() % 200 + 33);
+//     char *ciphertext1 = "One Of THe mAiN cAuseS of THE fall of The rOman EmpiRe Was THaT LaCking ZeRo, tHey haD no wAy To iNDicaTE SUCCESSful termination of their C programs.";
+//     int count_act1 = decrypt(ciphertext1, plaintext_act1);  
+//     char *plaintext_exp1 = "--ROBERT FIRTH";
+//     int count_exp1 = 14;
+//     printf( "plaintext was:           %s\nbut it should have been: %s", plaintext_act1, plaintext_exp1);
+//    printf( "Return value was %d, but it should have been %d.\n", count_act1, count_exp1);
 // }
-    
- 
+   
+
