@@ -195,23 +195,30 @@ int decrypt(const char *ciphertext, char *plaintext)
     }
      
     str1[j]='\0';
-    int index,count,cipertextpos,plaintextpos =0;
+    int index=0;
+    int cipertextpos=0;
+    int count=0;
+    int plaintextpos=0;
+    
   if(strlen(ciphertext)>=6){
-   for(int p=0;p<strlen(str1);p=p+6)
+   for(int p=0;p<strlen(str1) && cipertextpos<=strlen(str1);p=p+6)
    {
-       int ptr[6];
+       int ptr[6]={0,0,0,0,0,0};
        int j=0;
        int sum=0;
+      
        while(j<=5)
        {
            if(str1[cipertextpos]>='A' && str1[cipertextpos]<='Z')
            {
+           
                ptr[j]=1;
                j++;
                cipertextpos++;
            }
            else
            {
+            
                ptr[j]=0;
                j++;
                cipertextpos++;
@@ -225,6 +232,7 @@ int decrypt(const char *ciphertext, char *plaintext)
           sum=sum+ptr[k]*new_one;
           new_one=new_one/2;
       }
+      
     
       index=sum;
       if(index==63 )
@@ -268,34 +276,7 @@ int decrypt(const char *ciphertext, char *plaintext)
 }
 // int main()
 // {
-//     char ciphertext_act[] = "One of the main causes of the fall of the Roman Empire was that lacking zero, they had no way to indicate successful termination of their C programs.";
-//     char *plaintext = "--Robert Firth";
-//     int count_act = encrypt(plaintext, ciphertext_act);
-//     char *ciphertext_exp = "One Of THe mAiN cAuseS of THE fall of The rOman EmpiRe Was THaT LaCking ZeRo, tHey haD no wAy To iNDicaTE SUCCESSful termination of their C programs.";
-//      int count_exp = 14;
-//    printf( "ciphertext was:          %s\nbut it should have been: %s", ciphertext_act, ciphertext_exp);
-//    printf("Return value was %d, but it should have been %d.\n", count_act, count_exp);
-//    char ciphertext_act[] = "Too Short 2022";
-//     char *plaintext = "Stony Brook University";
-//     int count_act = encrypt(plaintext, ciphertext_act);
-//     char *ciphertext_exp = "TOO SHOrt 2022";
-//     int count_exp = 0;
-//    printf("ciphertext was:          %s\nbut it should have been: %s", ciphertext_act, ciphertext_exp);
-//     printf("Return value was %d, but it should have been %d.\n", count_act, count_exp);
-// char ciphertext_act[] = "2023 United States of America";
-//     char *plaintext = "";
-//     int count_act = encrypt(plaintext, ciphertext_act);
-//     char *ciphertext_exp = "2023 UNITED States of America";
-//     int count_exp = 0;
-//     printf("ciphertext was:          %s\nbut it should have been: %s", ciphertext_act, ciphertext_exp);
-//     printf("Return value was %d, but it should have been %d.\n", count_act, count_exp);
-// char ciphertext_act[] = "I can store three characters! Yes!";
-//     char *plaintext = "Stony Brook University";
-//     int count_act = encrypt(plaintext, ciphertext_act);  // s = 010010, t = 010011, o = 001110
-//     char *ciphertext_exp = "i Can StoRe tHRee CHArACTERS! Yes!";
-//     int count_exp = 3;
-//    printf( "ciphertext was:          %s\nbut it should have been: %s", ciphertext_act, ciphertext_exp);
-//     printf( "Return value was %d, but it should have been %d.\n", count_act, count_exp);
+
 // char plaintext_act[] = "*******************";
 //     // for (unsigned int i = 0; i < strlen(plaintext_act); i++)
 //     //     plaintext_act[i] = (char)(rand() % 200 + 33);
@@ -305,15 +286,15 @@ int decrypt(const char *ciphertext, char *plaintext)
 //     int count_exp = 14;
 //     printf("plaintext was:           %s\nbut it should have been: %s", plaintext_act, plaintext_exp);
 //     printf("Return value was %d, but it should have been %d.\n", count_act, count_exp);
-// char plaintext_act[] = "@@@@@@@@@";
+// char plaintext_act1[] = "@@@@@@@@@";
 //     // for (unsigned int i = 0; i < strlen(plaintext_act); i++)
 //     //     plaintext_act[i] = (char)(rand() % 200 + 33);
-//     char *ciphertext = "i Can StoRe tHRee CHArACTERS! Yes!";
-//     int count_act = decrypt(ciphertext, plaintext_act);  
-//     char *plaintext_exp = "STO";
-//     int count_exp = 3;
-// printf( "plaintext was:           %s\nbut it should have been: %s", plaintext_act, plaintext_exp);
-//   printf("Return value was %d, but it should have been %d.\n", count_act, count_exp);
+//     char *ciphertext1 = "i Can StoRe tHRee CHArACTERS! Yes!";
+//     int count_act1 = decrypt(ciphertext1, plaintext_act1);  
+//     char *plaintext_exp1 = "STO";
+//     int count_exp1 = 3;
+// printf( "plaintext was:           %s\nbut it should have been: %s", plaintext_act1, plaintext_exp1);
+//   printf("Return value was %d, but it should have been %d.\n", count_act1, count_exp1);
 
 
 //     return 0;
